@@ -1,0 +1,25 @@
+<%= form_with(model: [ @project, task ], local: true) do |form| %>
+  <% if task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+        <% task.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="input-group">
+
+    <%= form.text_field :name, placeholder: 'Enter task name...' %>
+    <%= form.text_area :description, placeholder: 'Enter description', rows: '1' %>
+    <%= form.text_field :status, size: '7' %>
+    <%= form.text_field :project_id, size: '2', class: 'ml-2' %>
+
+    <div class="input-group-append ml-2">
+      <%= form.submit "New Task", class: "btn btn-sm btn-success" %>
+    </div>
+  </div>
+<% end %>

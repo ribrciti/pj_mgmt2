@@ -1,0 +1,37 @@
+<div class="container ml-4 ">
+  <%= link_to "Home", root_path, class: "btn btn-sm btn-primary  mb-4" %>
+  <%= link_to 'Back', projects_path, class: "btn btn-sm btn-primary ml-2 mb-4" %>
+
+
+  <h3><strong>Project:</strong>
+    <%= @project.name %>
+  </h3>
+  <p>
+  <strong>Description:</strong>
+  <%= @project.description %>
+
+  <strong>User Id:</strong>
+  <%= @project.user_id %>
+  </p>
+
+
+
+<div class="card-title bg-info text-white p-2">
+  <strong>Tasks List:</strong>
+  <% @project.tasks.each do |task| %>
+    <h6><%= task.name %></h6>
+  <% end %>
+</div>
+
+<!-- Edit Tasks List START -->
+
+<h4 class="m-4 text-center">Edit <%= @project.name %> Tasks </h4>
+<%= render @project.tasks %>
+
+<!-- Edit Tasks List END -->
+
+<h5 class="text-center m-4">Add a New <%= @project.name %> Task</h5>
+<%= render 'tasks/form1', task: @project.tasks.build %>
+</div>
+
+
