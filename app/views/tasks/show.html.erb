@@ -1,24 +1,24 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<div class="container  m-4">
+  <h3>
+  <strong>Task:  </strong>
   <%= @task.name %>
-</p>
-
-<p>
+</h3>
+<br>
+<h5>
   <strong>Description:</strong>
   <%= @task.description %>
-</p>
-
-<p>
+</h5>
+<br>
+<h5>
   <strong>Status:</strong>
   <%= @task.status %>
-</p>
+</h5>
+<br>
 
-<p>
-  <strong>Project:</strong>
+<h5>
+  <strong>h5roject:</strong>
   <%= @task.project_id %>
-</p>
+</h5>
+</div>
 
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>

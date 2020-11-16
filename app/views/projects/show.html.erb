@@ -7,7 +7,7 @@
     <%= @project.name %>
   </h3>
   <p>
-  <strong>Description:</strong>
+  <strong class="ml-4">Description:</strong>
   <%= @project.description %>
 
   <strong>User Id:</strong>
@@ -16,13 +16,19 @@
 
 
 
-<div class="card-title bg-info text-white p-2">
-  <strong>Tasks List:</strong>
-  <% @project.tasks.each do |task| %>
-    <h6><%= task.name %></h6>
+<div class="container-title bg-info text-white p-2">
+  <h5><strong>Tasks List:</strong></h5>
+  <div class="row ml-3">
+    <% @project.tasks.each do |task| %>
+    <div class="col-sm-6 ">
+        <%= link_to task.name, project_task_path(@project, task), class: 'text-decoraton-none text-white font-weight-bold' %>
+    </div>
+    <div class="col-sm-6">
+       <%= task.description %>
+    </div>
   <% end %>
 </div>
-
+</div>
 <!-- Edit Tasks List START -->
 
 <h4 class="m-4 text-center">Edit <%= @project.name %> Tasks </h4>
