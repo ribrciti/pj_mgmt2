@@ -15,7 +15,7 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @task = @project.task.build
+
   end
 
   def create

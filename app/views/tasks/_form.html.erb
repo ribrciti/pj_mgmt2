@@ -12,14 +12,14 @@
   <% end %>
 
   <div class="input-group">
-    <%= form.text_field :name, placeholder: 'Enter task name...' %>
-    <%= form.text_area :description, placeholder: 'Enter description', rows: '1' %>
-    <%= form.text_field :status, size: '7' %>
+    <%= form.text_field :name, placeholder: 'Enter task name...', class: 'mr-1'%>
+    <%= form.text_area :description, placeholder: 'Enter description', rows: '1', class: 'mr-1' %>
+    <%= form.select :status, Task::STATUS_OPTIONS %>
 
 
-    <div class="input-group-append ml-2">
+    <div class="input-group-append ml-3">
       <%= form.submit "Fixit", class: "btn btn-sm btn-success" %>
-      <%= link_to "Done", project_task_path(@project, task), method: :delete, method: :delete,
+      <%= link_to "Done", project_task_path(@project, task), method: :delete,
                 data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger float-right font-weight-bold ml-2"%>
     </div>
   </div>

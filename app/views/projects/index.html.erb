@@ -1,15 +1,18 @@
-<div class="container m-4">
-
+<div class="container bg-secondary text-white font-weight-bold m-4">
   <p id="notice"><%= notice %></p>
-  <%= link_to 'New Project', new_project_path, class: "btn btn-sm btn-primary mb-4" %>
-  <h1>Projects</h1>
 
+
+  <h2 class="card-title d-flex justify-content-between p-2">
+    <span>Projects</span>
+    <%= link_to 'New Project', new_project_path, class: "btn btn-sm btn-primary mb-4" %>
+  </h2>
   <table>
-    <thead>
+    <thead class="text-warning">
       <tr>
         <th>Name</th>
         <th>Description</th>
-        <th>User</th>
+        <th>%</th>
+        <th>Done</th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -17,18 +20,33 @@
     <tbody>
       <% @projects.each do |project| %>
         <tr>
-          <td><%= project.name %></td>
-          <td><%= project.description %></td>
-          <td><%= project.user_id %></td>
-          <td><%= link_to 'Show', project, class: "btn btn-sm btn-primary" %></td>
-          <td><%= link_to 'Edit', edit_project_path(project) %></td>
-          <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td class="p-2"><%= project.name %></td>
+          <td class="p-2"><%= project.description %></td>
+
+          <td><span class="p-2 ml-2 badge badge-<%= project.badge_color %>" >
+            <% if project.percent_complete == 0 %>
+              <span>00</span>
+            <% else %>
+              <%= project.percent_complete %>
+            <% end %>
+          </span></td>
+          <td>
+            (<%= project.total_complete %>/<%= project.total_tasks %>)
+          </td>
+          <td><%= link_to 'Show', project, class: "btn btn-sm btn-primary  m-4" %></td>
         </tr>
       <% end %>
+
     </tbody>
   </table>
+   <div class="hline m-2">
+
+     <span class="badge badge-light ml-4 m-2">00 </span>% started
+     <span class="badge badge-success m-2 ml-5">25</span>% in-progress
+     <span class="badge badge-danger ml-5 m-2">100</span>% complete
+    </div>
 
   <br>
-
-
 </div>
+
+
